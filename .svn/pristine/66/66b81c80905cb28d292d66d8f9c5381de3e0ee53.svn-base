@@ -1,0 +1,27 @@
+<div class="row">
+    You agree that all PTW submissions have been carefully vetted, including PTW attached checklists, if any. You have also ensured that safety control measures are duly checked by the person responsible until work completion.
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    By using the ‘Multiple Assessed’ or ‘Multiple Approved’ function on CMS SHELL webpage, you acknowledge that CMS Data Technology Pte. Ltd. will not be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether in an action of contract, negligence or other tort, arising out of or in connection with the use of the said functions.
+</div>
+
+<div class="row" style="margin-top: 10px;">
+    <table width="100%">
+        <tr>
+            <td>By: Liu MinChao</td>
+            <td>Role: Assessor</td>
+            <td>Date: 27 Nov 2020 07:56</td>
+        </tr>
+        <tr>
+            <td>By: Du JunWei</td>
+            <td>Role: Approver</td>
+            <td>Date: 27 Nov 2020 08:00</td>
+        </tr>
+    </table>
+</div>
+
+<div class="row" style="text-align: center;margin-top: 10px;">
+    <button type="button" class="btn btn-default btn-lg" style="margin-left: 10px" onclick="back();">Cancel</button>
+    <button type="submit" id="sbtn" class="btn btn-primary btn-lg" >I Agree</button>
+</div>

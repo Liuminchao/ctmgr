@@ -1,0 +1,60 @@
+
+<div class="row">
+     <div class="col-md-12">
+         <h3 class="form-header text-blue">RA</h3>
+     </div>
+</div>
+<?php if(count($ra_path) > 0){
+    $ra = explode('|',$ra_path);
+    ?>
+    <?php foreach($ra as $count => $list){
+        $path = substr($list,22);
+        $ra_file = explode(',',$path);
+        $name = str_replace("&","%26",$ra_file[0]);
+        $list = '/opt/www-nginx/web'.str_replace("&","%26",$list);
+        ?>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="working_life"
+                           class="col-sm-6 control-label padding-lr5"><?php echo $name ?></label>
+                    <div class="col-sm-6 padding-lr5">
+                        <button class="btn btn-default" type='button' onclick="download('<?php echo $list ?>','<?php echo $name ?>')"><?php echo Yii::t('common', 'download');?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="form-header text-blue">SWP</h3>
+    </div>
+</div>
+<?php if(count($swp_path) > 0){
+    $swp = explode('|',$swp_path);
+    ?>
+    <?php foreach($swp as $count => $list){
+        $path = substr($list,23);
+        $swp_file = explode(',',$path);
+        $name = str_replace("&","%26",$swp_file[0]);
+        $list = '/opt/www-nginx/web'.str_replace("&","%26",$list);
+        ?>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="working_life"
+                           class="col-sm-6 control-label padding-lr5"><?php echo $name ?></label>
+                    <div class="col-sm-6 padding-lr5">
+                        <button class="btn btn-default" type='button' onclick="download('<?php echo $list ?>','<?php echo $name ?>')"><?php echo Yii::t('common', 'download');?></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+<?php } ?>
+<script type="text/javascript">
+    var download =  function(path,name){
+        window.location = "index.php?r=ra/raswp/downloadattachment&path="+path+"&name="+name;
+    }
+</script>

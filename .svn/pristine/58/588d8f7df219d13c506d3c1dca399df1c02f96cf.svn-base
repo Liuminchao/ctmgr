@@ -1,0 +1,23 @@
+<?php
+    $file_src = $_REQUEST['file_src'];
+    $args['type'] = 1;
+    $name = substr($file_src,38);
+    $upload = '/opt/www-nginx/web/filebase/tmp';
+    if (!file_exists($upload)) {
+        umask(0000);
+        @mkdir($upload, 0777, true);
+    }
+    $upload_file = $upload.$name;
+    //            var_dump($name);exit;
+    $file_name = explode('.',$name);
+    //移动文件到指定目录下
+    if (rename($file_src,$upload_file)) {
+        $r['src'] = 'https://shell.cmstech.sg'.substr($upload_file,18);
+        $r['status'] = 1;
+        $r['refresh'] = true;
+    }else{
+        $r['msg'] = "Error moving";
+        $r['status'] = -1;
+        $r['refresh'] = false;
+    }
+    print_r(json_encode($r));

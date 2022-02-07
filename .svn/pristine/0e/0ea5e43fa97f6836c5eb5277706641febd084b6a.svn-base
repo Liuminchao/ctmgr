@@ -1,0 +1,17 @@
+<?php
+    $check_id = $_REQUEST['check_id'];
+    //创建实例对象，连接数据库
+    $pdo = new PDO('mysql:host=rm-gs51693z4l4s7l46p.mysql.singapore.rds.aliyuncs.com;dbname=cmsdb2','cmsdb','cmsdb@2015');
+    $sql = "SELECT * FROM bac_rfi_list where  check_id = :check_id";
+    //创建预处理对象
+    $stmt = $pdo->prepare($sql);
+    //bindParam:绑定一个参数到指定的变量名（类似于占位符）
+    $stmt->bindParam(':check_id',$check_id,PDO::PARAM_STR);
+    if (!$stmt->execute()) {
+        print_r($stmt->errorInfo());
+        exit();
+    }
+    $data_list = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $r['data'] = $data_list;
+    $r['msg'] = 'Success';
+    print_r(json_encode($r));

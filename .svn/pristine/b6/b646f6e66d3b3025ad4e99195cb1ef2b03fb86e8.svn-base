@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<node>
+    <contractor_id>146</contractor_id>
+    <module>Ptw</module>
+    <node>
+        <role>2nd Assessor</role>
+        <role>Assessor</role>
+        <role>Checker</role>
+    </node>
+</node>

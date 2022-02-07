@@ -1,0 +1,32 @@
+<?php
+//    $s = file_get_contents('php://input', 'r');;
+    $r['title'] = $_REQUEST['title'];
+    $r['model'] = $_REQUEST['model'];
+    $r['model_id'] = $_REQUEST['model_id'];
+    $r['entityId'] = $_REQUEST['entityId'];
+    $r['uuid'] = $_REQUEST['uuid'];
+    $r['remark'] = $_REQUEST['remark'];
+    $r['check_id'] = $_REQUEST['check_id'];
+    $r['view'] = $_REQUEST['view'];
+    //创建实例对象，连接数据库
+    $pdo = new PDO('mysql:host=rm-gs51693z4l4s7l46p.mysql.singapore.rds.aliyuncs.com;dbname=cmsdb2','cmsdb','cmsdb@2015');
+    $sql = "Update bac_rfi_list set title=:title,model=:model,model_id=:model_id,entityId=:entityId,uuid=:uuid,remark=:remark,view=:view where check_id = :check_id";
+    //创建预处理对象
+    $stmt = $pdo->prepare($sql);
+    //bindParam:绑定一个参数到指定的变量名（类似于占位符）
+    $stmt->bindParam(':title',$r['title'],PDO::PARAM_STR);
+    $stmt->bindParam(':check_id',$r['check_id'],PDO::PARAM_STR);
+    $stmt->bindParam(':model',$r['model'],PDO::PARAM_STR);
+    $stmt->bindParam(':model_id',$r['model_id'],PDO::PARAM_STR);
+    $stmt->bindParam(':entityId',$r['entityId'],PDO::PARAM_STR);
+    $stmt->bindParam(':uuid',$r['uuid'],PDO::PARAM_STR);
+    $stmt->bindParam(':view',$r['view'],PDO::PARAM_STR);
+    $stmt->bindParam(':remark',$r['remark'],PDO::PARAM_STR);
+    if (!$stmt->execute()) {
+        print_r($stmt->errorInfo());
+        exit();
+    }
+    $rs['status'] = 1;
+    $rs['msg'] = 'Success';
+
+    print_r(json_encode($s));
